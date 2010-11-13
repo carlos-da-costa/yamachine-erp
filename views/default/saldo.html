@@ -1,0 +1,6 @@
+{{extend 'layout.html'}}
+<h3>Saldo atual de cada plano de conta</h3>
+
+{{for saldo in saldos:}}
+	{{=H4(saldo[0],': ',moeda(saldo[1]))}}
+{{pass}}

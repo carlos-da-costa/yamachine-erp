@@ -1,0 +1,7 @@
+{{extend 'layout.html'}}
+{{if not auth.is_logged_in():}}
+	{{=LOAD('default','user.load','login',ajax=False)}}
+{{else:}}
+	<div style="min-height:300px">
+	</div>
+{{pass}}

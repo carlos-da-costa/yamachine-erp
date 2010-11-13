@@ -1,0 +1,46 @@
+{{extend 'layout.html'}}
+<script type="text/javascript">
+	$(function() {
+		$("#tabs").tabs();
+	});
+</script>
+
+<h1>Projeto #{{=projeto.id}}</h1>
+<h2>Cliente: {{=projeto.cliente.nome}}</h2>
+
+<div id="tabs">
+	<ul>
+		<li><a href="#tabs-geral">Geral</a></li>	
+		<li><a href="#tabs-prop">Propostas</a></li>
+		<li><a href="#tabs-cont">Contratos</a></li>
+	</ul>
+	
+	<div id="tabs-geral">
+		{{if proposta_aprovada:}}
+			<p>Proposta aprovada: {{=A('Editar',_href=URL(r=request,c='default',f='editar_proposta',args=proposta_aprovada.id))}} 
+			{{=A('Visualizar',_href=URL(r=request,c='default',f='visualizar_proposta',args=proposta_aprovada.id))}}
+			</p>
+		{{else:}}
+    		<p>Ainda não há propostas nesse projeto.</p>
+		{{pass}}
+		
+		{{if contrato_fechado:}}
+			<p>Contrato: {{=A('#',contrato_fechado.id,_href=URL(r=request,c='default',f='editar_contrato',args=contrato_fechado.id))}}</p>
+		{{else:}}
+			<p>Não há contrato para a proposta aprovada ou não há nenhum contrato.</p>
+	    {{pass}}
+		
+	</div>
+	
+	<div id="tabs-prop">
+		{{=A(TAG.button('Nova Proposta',_id='nova_proposta'),_href=URL(r=request,c='default',f='criar_proposta',args=projeto.id))}}
+    	{{=propostas}}	
+	
+	</div>
+
+    <div id="tabs-cont">
+        {{=A(TAG.button('Novo Contrato',_id='nova_contrato'),_href=URL(r=request,c='default',f='criar_contrato',args=projeto.id))}}
+        {{=contratos}}
+    </div>
+
+</div>

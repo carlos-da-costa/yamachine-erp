@@ -1,0 +1,30 @@
+(dp1
+S'quantidade'
+p2
+S'INTEGER'
+p3
+sS'movimento'
+p4
+S'CHAR(512)'
+p5
+sS'produto'
+p6
+S'INTEGER REFERENCES produto(id) ON DELETE CASCADE'
+p7
+sS'marca'
+p8
+S'CHAR(512)'
+p9
+sS'preco'
+p10
+S'DOUBLE'
+p11
+sS'data'
+p12
+S'DATE'
+p13
+sS'id'
+p14
+S'INTEGER PRIMARY KEY AUTOINCREMENT'
+p15
+s.

@@ -1,0 +1,10 @@
+(dp1
+S'id'
+p2
+S'INTEGER PRIMARY KEY AUTOINCREMENT'
+p3
+sS'cliente'
+p4
+S'INTEGER REFERENCES parceiro(id) ON DELETE CASCADE'
+p5
+s.

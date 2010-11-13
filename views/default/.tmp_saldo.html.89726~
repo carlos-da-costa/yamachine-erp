@@ -1,0 +1,4 @@
+{{extend 'layout.html'}}
+{{for saldo in saldos:}}
+	{{=H3(saldo[0],':','%2f' % saldo[1])}}
+{{pass}}

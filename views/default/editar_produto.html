@@ -1,0 +1,17 @@
+{{extend "layout.html"}}
+<script type="text/javascript">
+	$(function() {
+		$("#tabs").tabs();
+	});
+</script>
+
+<div id="tabs">
+	<ul>
+		<li><a href="#tabs-form">{{=title or ''}}</a></li>
+	</ul>
+	
+	<div id="tabs-form">
+		{{=form}}
+		<h4>Em estoque: {{=total_estoque}}</h4>
+	</div>
+</div>

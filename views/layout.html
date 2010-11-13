@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="{{=T.accepted_language or 'en'}}">
+    <head>
+        <title>{{=response.title or request.application}}</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+        {{#------  require CSS and JS files for this page (read info in base.css) ------}}
+        {{response.files.append(URL(request.application,'static','base.css'))}}
+        {{response.files.append(URL(request.application,'static','jquery.layout.min.js'))}}
+        {{response.files.append(URL(request.application,'static','superfish.js'))}}
+        {{response.files.append(URL(request.application,'static','superfish.css'))}}
+        {{#------ include web2py specific js code (jquery, calendar, form stuff) ------}}
+        {{include 'web2py_ajax.html'}}
+        <SCRIPT type="text/javascript">
+            $(document).ready(function(){
+                $('body').layout({
+                    applyDefaultStyles: true,
+                    north: {
+                        spacing_open: 0
+                    },
+					south:{spacing_open:0}
+                });
+            });
+        </SCRIPT>
+    </head>
+    <body>
+        <div class="ui-layout-center ui-widget-content" id="content">
+            
+				<div style="float:left; width:100%">
+                    {{=MENU(response.menu,_class='sf-menu')}}
+                    <script>
+                        jQuery(document).ready(function(){
+                            jQuery('ul.sf-menu').superfish({
+                                delay: 400
+                            });
+                        });
+                    </script>
+                </div>
+                <div style="float:left">
+                    {{include}}
+                </div>
+            
+        </div>
+        <div class="ui-layout-north " id="header">
+            <div class="ui-widget-header">
+                <h2>{{=response.title or 'response.title'}}</h2>
+                <strong>{{=response.subtitle or 'response.subtitle'}}</strong>
+            </div>
+        </div>
+        <div class="ui-layout-south " id="footer">
+            <div class="ui-widget-footer">
+                {{=T('Copyright')}} &#169; 2010 - <a href="http://www.ya-machine.com">Ya-machine.com</a>
+                | <a href="http://www;ya-machine.com/suporte/whmcs">Suporte</a>
+            </div>
+        </div>
+			
+        <div class="flash">
+            {{=response.flash or ''}}
+        </div>
+    </body>
+</html>
